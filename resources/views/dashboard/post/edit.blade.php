@@ -10,7 +10,6 @@
     @include('dashboard.fragments._errors-form')
 
     <form action="{{ route('post.update', $post) }}" method="POST" class="space-y-2" enctype="multipart/form-data">
-        @csrf
         @method("PUT")
         @include('dashboard.fragments._post-form')
     </form>

@@ -8,9 +8,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Category extends Model
 {
+    protected $fillable = ['title', 'slug'];
+    protected $table = 'categories';
+
 
     // Relacion  de uno a muchos inversa Posts
-    public function posts(){
+    public function posts()
+    {
         return $this->hasMany(Post::class, 'category_id');
     }
 
