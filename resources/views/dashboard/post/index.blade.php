@@ -6,9 +6,9 @@
 
 @section('content')
 
-    <a href="{{route('post.create')}}">Crear post</a>
+    <a href="{{route('post.create')}}" class="btn btn-primary">Crear post</a>
 
-    <table class="text-left">
+    <table class="table">
         <thead>
             <tr>
                 <th class="p-1">Title</th>
@@ -24,17 +24,17 @@
                     <td class="p-1">{{ $post->category->title }}</td>
                     <td class="p-1">{{ $post->posted }}</td>
                     <td class="p-1">
-                        <a href="{{route('post.edit', $post)}}">Editar</a>
-                        <a href="{{route('post.show', $post)}}">Ver</a>
+                        <a href="{{route('post.edit', $post)}}" class="btn btn-success">Editar</a>
+                        <a href="{{route('post.show', $post)}}" class="btn btn-warning">Ver</a>
                         <form action="{{route('post.destroy', $post)}}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit">Eliminar</button>
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
                         </form>
                     </td>
                 </tr>
             @empty
-            <tr>No hay posts</tr>
+            <p>No hay posts</p>
             @endforelse
         </tbody>
     </table>
