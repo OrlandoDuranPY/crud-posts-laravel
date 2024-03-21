@@ -26,7 +26,7 @@ Route::get('/', function () {
 Rutas para el manejo de las categorias
 y posts
 ========================================= */
-Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
+Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'isAdmin']], function () {
     Route::get('/', function () {
         return view('dashboard');
     })->name('dashboard');
