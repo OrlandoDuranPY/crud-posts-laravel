@@ -3,7 +3,10 @@
 namespace App\Http\Requests\Post;
 
 use Illuminate\Support\Str;
+use Illuminate\Http\Response;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Validation\ValidationException;
 
 class StoreRequest extends FormRequest
 {
@@ -23,6 +26,14 @@ class StoreRequest extends FormRequest
     public function authorize(): bool
     {
         return true;
+    }
+
+    public function failedValidation(Validator $validator)
+    {
+        if ($this->expectsJson()) {
+            $response = new Response($validator->errors(), 400);
+            throw new ValidationException($validator, $response);
+        }
     }
 
     /**

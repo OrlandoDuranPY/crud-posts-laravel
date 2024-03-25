@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +19,16 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+/* ========================================
+Categories api routes
+========================================= */
+Route::get('category/all', [CategoryController::class, 'all']); // get all categories
+Route::resource('category', CategoryController::class)->except('create', 'edit');
+
+/* ========================================
+Posts api routes
+========================================= */
+Route::get('post/all', [PostController::class, 'all']); // get all posts
+Route::resource('post', PostController::class)->except('create', 'edit');
