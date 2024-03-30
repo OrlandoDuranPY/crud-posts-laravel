@@ -44,6 +44,14 @@ class PostController extends Controller
         return response()->json($post);
     }
 
+    /* ========================================
+    Buscar por slug
+    ========================================= */
+    public function slug($slug){
+        $post = Post::with('category')->firstWhere('slug', $slug);
+        return response()->json($post);
+    }
+
 
     /**
      * Update the specified resource in storage.

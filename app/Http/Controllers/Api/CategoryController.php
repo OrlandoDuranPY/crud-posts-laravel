@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Category\PutRequest;
 use App\Http\Requests\Category\StoreRequest;
 use App\Models\Category;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -43,6 +44,14 @@ class CategoryController extends Controller
         return response()->json($category);
     }
 
+    /* ========================================
+    Buscar por slug
+    ========================================= */
+    public function slug($slug)
+    {
+        $post = Category::firstWhere('slug', $slug);
+        return response()->json($post);
+    }
 
     /**
      * Update the specified resource in storage.
@@ -63,5 +72,23 @@ class CategoryController extends Controller
     {
         $category->delete();
         return response()->json(['message' => 'Category deleted']);
+    }
+
+    /* ========================================
+    Post en base a la categoria
+    ========================================= */
+    public function posts(Category $category)
+    {
+        // Forma Query Builder
+        // $posts = Post::join('categories', 'categories.id', '=', 'posts.category_id')
+        // ->select('posts.*', 'categories.title as category')
+        // ->where('categories.id', $category->id)
+        // ->get();
+
+        // Forma Eloquent
+        $posts = Post::with('category')
+            ->where('category_id', $category->id)->get();
+
+        return response()->json($posts);
     }
 }
