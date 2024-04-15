@@ -17,6 +17,8 @@
     },
     "dependencies": {
         "@oruga-ui/oruga-next": "^0.8.7",
+        "@oruga-ui/theme-bootstrap": "^0.5.4",
+        "@oruga-ui/theme-oruga": "^0.2.2",
         "@vitejs/plugin-vue": "^5.0.4",
         "vue": "^3.4.21",
         "vue-loader": "^17.4.2"

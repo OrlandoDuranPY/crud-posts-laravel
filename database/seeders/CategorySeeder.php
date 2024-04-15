@@ -23,6 +23,8 @@ class CategorySeeder extends Seeder
             DB::table('categories')->insert([
                 'title' => 'Categoria '.$i,
                 'slug' => 'categoria-'.$i,
+                'created_at' => now(),
+                'updated_at' => now(),
             ]);
         }
     }

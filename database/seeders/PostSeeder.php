@@ -24,6 +24,8 @@ class PostSeeder extends Seeder
                 'description' => Str::random(50),
                 'posted' => 'yes',
                 'category_id' => $category->id,
+                'created_at' => now(),
+                'updated_at' => now(),
             ]);
         }
     }

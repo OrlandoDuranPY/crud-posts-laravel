@@ -10,7 +10,6 @@
 </head>
 
 <body class="bg-slate-500">
-    <h1>Hola</h1>
     <div id="app"></div>
     @vite('resources/js/vue/main.js')
 </body>
